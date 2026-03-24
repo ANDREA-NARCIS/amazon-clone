@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+
+    <style>
+        body { font-family: Arial; background:#f3f3f3; }
+        .box {
+            width:300px;
+            margin:100px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+        }
+        input, button {
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+        }
+        button {
+            background:#131921;
+            color:white;
+            border:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Edit Profile</h2>
+
+    <form action="/profile/update" method="post">
+        <input type="text" name="username" th:value="${user.username}" />
+        <button type="submit">Update</button>
+    </form>
+
+    <br>
+    <a href="/">← Back</a>
+</div>
+
+</body>
+</html>

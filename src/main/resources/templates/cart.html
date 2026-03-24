@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cart</title>
+
+    <style>
+        body { font-family: Arial; background:#f3f3f3; }
+        .container { padding:20px; }
+
+        .item {
+            background:white;
+            padding:15px;
+            margin-bottom:10px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-radius:10px;
+        }
+
+        .btn {
+            padding:8px;
+            border:none;
+            cursor:pointer;
+        }
+
+        .remove { background:red; color:white; }
+        .order { background:green; color:white; margin-top:20px; display:block; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Your Cart</h2>
+
+    <div th:each="item, iterStat : ${cart}" class="item">
+        <div>
+            <h4 th:text="${item.name}"></h4>
+            <p>₹<span th:text="${item.price}"></span></p>
+        </div>
+
+        <a th:href="@{'/cart/remove/' + ${iterStat.index}}">
+            <button class="btn remove">Remove</button>
+        </a>
+    </div>
+
+    <a href="/cart/checkout">
+        <button class="btn order">Place Order</button>
+    </a>
+
+    <br><br>
+    <a href="/">← Continue Shopping</a>
+</div>
+
+</body>
+</html>
